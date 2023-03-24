@@ -1,0 +1,9 @@
+# train with many loggers at once
+
+defaults:
+  - mlflow.yaml
+  - tensorboard.yaml
+  # - csv.yaml
+  # - comet.yaml
+  # - neptune.yaml
+  # - wandb.yaml

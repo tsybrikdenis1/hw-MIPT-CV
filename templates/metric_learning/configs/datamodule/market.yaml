@@ -1,0 +1,5 @@
+_target_: src.datamodules.market_datamodule.MarketDataModule
+data_dir: ${paths.data_dir}/Market
+batch_size: 256
+num_workers: 8
+pin_memory: True

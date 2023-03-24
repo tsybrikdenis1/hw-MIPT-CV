@@ -1,0 +1,5 @@
+_target_: src.models.metric_learning_module.MetricLearningModule
+num_classes: 751
+embedding_size: 256
+lr: 0.05
+wd: 0

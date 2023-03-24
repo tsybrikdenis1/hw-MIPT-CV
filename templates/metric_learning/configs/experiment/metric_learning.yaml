@@ -1,0 +1,40 @@
+# @package _global_
+
+defaults:
+  - override /datamodule: market.yaml
+  - override /model: metric_learning.yaml
+  - override /callbacks: default.yaml
+  - override /trainer: default.yaml
+  - override /logger: many_loggers.yaml
+
+tags: ["market", "arc_face"]
+
+seed: 1
+
+trainer:
+  min_epochs: 200
+  max_epochs: 200
+  detect_anomaly: False
+  accelerator: gpu
+  log_every_n_steps: 6
+  gradient_clip_val: 3
+
+datamodule:
+  batch_size: 1024
+
+model:
+  embedding_size: 256
+  lr: 0.3
+
+logger:
+  mlflow:
+    experiment_name: "metric_learning"
+    run_name: "train clip=3"
+    tags:
+      lr: ${model.lr}
+      embedding_size: ${model.embedding_size}
+      wd: 0
+  tensorboard:
+    name: ${logger.mlflow.experiment_name}
+    version: ${logger.mlflow.run_name}
+    default_hp_metric: False
